@@ -1,0 +1,100 @@
+<div class="cange_box">
+    <div class="title">
+        <input class="input_change" type="text" placeholder="">
+    </div>
+    <div class="arial">
+        <textarea name="text" id="y" cols="50" rows="30" class="taria">
+        </textarea>
+        <div class="box_btn">
+            <button class="btnChange" data-name="{{name}}">Добавить</button>
+        </div>
+    </div>
+</div>
+<style>
+    .btnChange {
+        background-color: aquamarine;
+        border: none;
+        border-radius: 15px;
+        height: 30px;
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .cange_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .input_change {
+        border: 4px solid aquamarine;
+        width: 60vw;
+        height: 30px;
+        margin-top: 20px;
+        color: aquamarine;
+        border-radius: 15px;
+        padding: 5px;
+    }
+
+    .arial {
+        height: 100%;
+        width: 70vw;
+        border: 4px solid aquamarine;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .taria {
+        width: 100%;
+        height: 90%;
+        color: aquamarine;
+        border-radius: 15px;
+        border: none;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    .box_btn {
+        display: flex;
+        height: 10%;
+        width: 100%;
+        justify-content: end;
+        align-items: flex-end;
+    }
+</style>
+<script>
+    const btn = document.querySelector('.btnChange');
+    const name = btn.dataset.name;
+    const aria = document.querySelector('.taria');
+    const input = document.querySelector('.input_change');
+
+    async function response(url, obj, fun) {
+        const res = await fetch(url, {
+            method: 'post',
+            body: JSON.stringify(obj),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        let json = await res.json().then(fun);
+        return json;
+    }
+
+    btn.addEventListener('click', function () {
+        const head = input.value;
+        const text = aria.value;
+        const name = btn.dataset.name;
+        response('http://localhost:3000/add', { name: name, head: head, text: text }, (data) => {
+            console.log(data);
+            if (data.message === 'ok') {
+                window.location.href = `/?name=${name}`;
+            }
+        })
+    })
+</script>

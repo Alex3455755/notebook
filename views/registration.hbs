@@ -1,0 +1,82 @@
+<p class="err"></p>
+<div class="reg_box">
+    <div class="form">
+        <div class="inputs">
+            <input type="text" class="input" placeholder="Логин">
+            <input type="text" class="input" placeholder="Пароль">
+            <button class="inputBtn">Зарегистрироватся</button>
+            </form>
+        </div>
+    </div>
+    <style>
+        .menu {
+            display: none;
+        }
+
+        .form {
+            height: 100%;
+        }
+
+        body {
+            background-color: aquamarine;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .link_main {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        const btn = document.querySelector('.inputBtn');
+        const link = document.querySelector('.link_main');
+        const inputs = document.querySelectorAll('.input');
+        const err = document.querySelector('.err');
+
+        async function response(url, obj, fun) {
+            const res = await fetch(url, {
+                method: 'post',
+                body: JSON.stringify(obj),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+            let json = await res.json().then(fun);
+            return json;
+        }
+
+
+        btn.addEventListener('click', function () {
+            const name = inputs[0].value;
+            const password = inputs[1].value;
+            if (name !== '' && password.length > 8) {
+                response('http://localhost:3000/registr', { email: `${name}`, password: `${password}` },
+                    (data) => {
+                        const result = JSON.parse(data);
+                        if (result.message === "пользователь зарегистрирован") {
+                            window.location.href = `/?name=${name}`;
+                        }
+                        else {
+                            err.textContent = result.message;
+                        }
+                    })
+            } else if (password.length < 8) {
+                err.textContent = 'пароль должен содержать минимум 8 символов';
+            } else {
+                for (i of inputs) {
+                    if (!i.value) {
+                        i.classList.add('err_input');
+                        i.placeholder = 'поле не должно быть пустым';
+                    }
+                }
+            }
+        })
+    </script>

@@ -1,0 +1,305 @@
+<div class="login">
+    <p class="err">{{message}}</p>
+    <div class="reg_box">
+        <div class="form" method="post">
+            <div class="inputs">
+                <input type="text" class="input" placeholder="Логин">
+                <input type="text" class="input" placeholder="Пароль">
+                <button class="inputBtn">Войти</button>
+            </div>
+        </div>
+        <div class="loginOrReg">
+            <a href="/rigistr" class="regLink">РЕГИСТРАЦИЯ</a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <aside class="aside">
+        <p class="Date">14.06</p>
+        <div class="profil">
+            <div class="ava">
+                <div class="squar"></div>
+            </div>
+            <p class="email">{{name}}</p>
+        </div>
+        <button class="inputBtn btn">Добавить</button>
+    </aside>
+    <article>
+    </article>
+</div>
+<style>
+    .heder_link {
+        text-decoration: none;
+        color: #000;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .btn {
+        width: 80%;
+    }
+
+    .menu {
+        background-color: aquamarine;
+        height: 50px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .link_menu {
+        text-decoration: none;
+        color: black;
+        margin: 5px;
+    }
+
+    .ava {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80%;
+    }
+
+    .profil {
+        height: 200px;
+        width: 100%;
+        border-top: 4px solid aquamarine;
+        border-bottom: 4px solid aquamarine;
+    }
+
+    aside {
+        height: 60vh;
+        width: 300px;
+        border: 3px solid aquamarine;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .squar {
+        border: 2px solid #000;
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+    }
+
+    .email {
+        color: aquamarine;
+        text-align: center;
+    }
+
+    .Date {
+        color: aquamarine;
+        margin-top: 20px;
+        font-size: 60px;
+    }
+
+    .container {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .login {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: visible;
+    }
+
+    .reg_box {
+        background-color: #fff;
+        width: 300px;
+        height: 50vh;
+        border-radius: 20px;
+        border: 3px solid aquamarine;
+        outline: 2px solid white;
+    }
+
+    .loginOrReg {
+        background-color: aquamarine;
+        height: 20%;
+        border-radius: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form {
+        height: 78%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputs {
+        height: 60%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .regLink {
+        text-decoration: none;
+        color: white;
+    }
+
+    .loginOrReg:hover {
+        background-color: rgb(43, 170, 128);
+    }
+
+    .inputBtn {
+        height: 30px;
+        border: none;
+        border-radius: 8px;
+        background-color: aquamarine;
+        color: white;
+        border: none;
+    }
+
+    .inputBtn:hover {
+        background-color: rgb(43, 170, 128);
+    }
+
+    .input {
+        height: 30px;
+        border: 1px solid aquamarine;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .err {
+        background-color: aquamarine;
+        height: 40px;
+        width: 300px;
+        position: absolute;
+        top: 100px;
+        color: rgb(226, 78, 78);
+        border-radius: 5px;
+        text-align: center;
+    }
+
+    .elm_list {
+        width: 50vw;
+        height: 50px;
+        border: 3px solid #000;
+        border-radius: 15px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: white;
+    }
+</style>
+<script>
+    const date = new Date;
+    const day = date.getDate();
+    let month = date.getMonth();
+    const num = document.querySelector('.Date');
+    const btn = document.querySelector('.inputBtn');
+    const inputs = document.querySelectorAll('.input');
+    const pErr = document.querySelector('.err');
+    const log = document.querySelector('.login');
+    const email = document.querySelector('.email');
+    const addBtn = document.querySelector('.btn');
+
+    async function response(url, obj, fun) {
+        const res = await fetch(url, {
+            method: 'post',
+            body: JSON.stringify(obj),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        let json = await res.json().then(fun);
+        return json;
+    }
+
+    function listRender(name) {
+        response('http://localhost:3000/list', { name: `${name}` }, (data) => {
+            data.reverse();
+            const article = document.querySelector('article');
+            for (i of data) {
+                const elem = document.createElement('button');
+                elem.classList.add('elm_list')
+                if (i.heder.length > 30) {
+                    const head = i.heder.slice(0, 29) + '...';
+                    elem.dataset.fullText = i.heder;
+                    elem.textContent = head;
+                } else {
+                    elem.dataset.fullText = i.heder;
+                    elem.textContent = i.heder;
+                }
+                article.appendChild(elem);
+                elem.addEventListener('click', function (event) {
+                    const head = event.target.dataset.fullText
+                    window.location.href = `/cart?name=${name}&head=${head}`;
+                })
+            }
+        });
+    }
+    console.log(email.textContent);
+    if (email.textContent) {
+        const name = email.textContent;
+        listRender(name);
+        log.style.visibility = 'hidden';
+    }
+
+    let result;
+
+    if (month < 9) {
+        month++;
+        if (day < 10) result = `0${day}:0${month}`;
+        else result = `${day}:0${month}`;
+    }
+    else {
+        month++
+        if (day < 10) result = `0${day}:${month}`;
+        else result = `${day}:${month}`;
+    }
+    num.textContent = result;
+
+    addBtn.addEventListener('click', function () {
+        const name = email.textContent
+        window.location.href = `/add?name=${name}`;
+    })
+
+
+    btn.addEventListener('click', function () {
+        const name = inputs[0].value;
+        const password = inputs[1].value;
+        if (name !== '' && password !== '') {
+            response('http://localhost:3000/', { email: `${name}`, password: `${password}` }, (data) => {
+                const result = JSON.parse(data);
+                log.style.visibility = result.vision;
+                pErr.textContent = result.message;
+                email.textContent = name;
+                listRender(name);
+            });
+        } else {
+            for (i of inputs) {
+                if (!i.value) {
+                    i.classList.add('err_input');
+                    i.placeholder = 'поле не должно быть пустым';
+                }
+            }
+        }
+    });
+
+</script>

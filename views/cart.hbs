@@ -1,0 +1,275 @@
+<div class="cange_box">
+    <div class="title title_change">
+        <input class="input_change" type="text">
+    </div>
+    <div class="arial taria">
+        <textarea name="text" id="y" cols="50" rows="30" class="taria textInput">
+        </textarea>
+        <div class="box_btn">
+            <button class="btnChange">Сохранить</button>
+        </div>
+    </div>
+</div>
+<div class="cart">
+    <div class="title">
+        <p data-author="{{name}}">{{head}}</p>
+        <button class="change btn">Редактировать</button>
+    </div>
+    <div class="arial div">
+        {{text}}
+    </div>
+</div>
+<style>
+    .btnChange {
+        background-color: aquamarine;
+        border: none;
+        border-radius: 15px;
+        height: 30px;
+        width: 100px;
+        margin-right: 10px;
+    }
+
+    .cange_box {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        visibility: hidden;
+    }
+
+    .change {
+        background-color: aquamarine;
+        color: white;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 100%;
+    }
+
+    .input_change {
+        color: aquamarine;
+        width: 100%;
+        height: 100%;
+        border-radius: 20px;
+        border: none;
+        padding-left: 20px;
+    }
+
+    .cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .title {
+        width: 80vw;
+        border: 4px solid aquamarine;
+        height: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .box_btn {
+        display: flex;
+        width: 100%;
+        height: 10%;
+        justify-content: end;
+        align-items: end
+    }
+
+    .title_change {
+        border: 4px solid #000;
+    }
+
+    .arial {
+        height: 80vh;
+        border: 4px solid aquamarine;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px;
+        width: 90vw;
+        margin-top: 50px;
+    }
+
+    .taria {
+        text-align: center;
+        border-radius: 20px;
+        border: 4px solid black;
+        color: aquamarine;
+
+    }
+
+    .textInput {
+        width: 100%;
+        border: none;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: large;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        background-color: aquamarine;
+        height: 50px;
+        width: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .link_menu {
+        text-decoration: none;
+        color: black;
+        margin: 5px;
+    }
+
+    aside {
+        height: 60vh;
+        width: 300px;
+        border: 3px solid aquamarine;
+        border-radius: 20px;
+    }
+
+    .container {
+        margin-top: 40px;
+    }
+
+    .login {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: aquamarine;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .reg_box {
+        background-color: #fff;
+        width: 300px;
+        height: 50vh;
+        border-radius: 20px;
+        border: 3px solid aquamarine;
+        outline: 2px solid white;
+    }
+
+    .loginOrReg {
+        background-color: aquamarine;
+        height: 20%;
+        border-radius: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form {
+        height: 78%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inputs {
+        height: 60%;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .regLink {
+        text-decoration: none;
+        color: white;
+    }
+
+    .loginOrReg:hover {
+        background-color: rgb(43, 170, 128);
+    }
+
+    .inputBtn {
+        height: 30px;
+        border: none;
+        border-radius: 8px;
+        background-color: aquamarine;
+        color: white;
+    }
+
+    .inputBtn:hover {
+        background-color: rgb(43, 170, 128);
+    }
+
+    .input {
+        height: 30px;
+        border: 1px solid aquamarine;
+        text-align: center;
+        border-radius: 8px;
+    }
+
+    .err {
+        background-color: aquamarine;
+        height: 40px;
+        width: 300px;
+        position: absolute;
+        top: 100px;
+        color: rgb(226, 78, 78);
+        border-radius: 5px;
+        text-align: center;
+    }
+</style>
+<script>
+    const btn = document.querySelector('.btn');
+    const box1 = document.querySelector('.cart');
+    const box2 = document.querySelector('.cange_box');
+    const input = document.querySelector('.input_change');
+    const aria = document.querySelector('.textInput');
+    const par = document.querySelector('p');
+    const div = document.querySelector('.div');
+    const btnChan = document.querySelector('.btnChange');
+
+    async function response(url, obj, fun) {
+        const res = await fetch(url, {
+            method: 'post',
+            body: JSON.stringify(obj),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        let json = await res.json().then(fun);
+        return json;
+    }
+
+
+
+    btn.addEventListener('click', function () {
+        box1.style.visibility = 'hidden';
+        box2.style.visibility = 'visible'
+        aria.value = div.textContent;
+        input.value = par.textContent;
+    });
+
+    btnChan.addEventListener('click', function () {
+        const name = par.dataset.author;
+        response('http://localhost:3000/change', { head: input.value, text: aria.value, name: name, pastHead: par.textContent },
+            (data) => {
+                if (data.message === 'ok') {
+                    window.location.href = `/?name=${name}`;
+                }
+            })
+    });
+
+</script>
