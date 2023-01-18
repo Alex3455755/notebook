@@ -119,6 +119,7 @@
         left: 0;
         background: var(--appFirstColor);
         display: flex;
+        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
@@ -212,16 +213,26 @@
     }
 
     .elm_list {
-        width: 50vw;
-        height: 50px;
+        width: 25vw;
+        position: relative;
+        height: 25vw;
         color: var(--appSecondColor);
-        border: none;
-        border-radius: 15px;
+        border: 2px solid #000;
         margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--appFirstColor);
+        background-color: yellow;
+    }
+    .elm_list::after {
+        border: 2px solid #000;
+        z-index: -1;
+        content: '';
+        position: absolute;
+        width: 25vw;
+        height: 25vw;
+        background-color: yellow;
+        transform: rotate(12deg);
     }
 </style>
 <script>
@@ -253,7 +264,7 @@
             data.reverse();
             const article = document.querySelector('article');
             for (i of data) {
-                const elem = document.createElement('button');
+                const elem = document.createElement('div');
                 elem.classList.add('elm_list')
                 if (i.heder.length > 30) {
                     const head = i.heder.slice(0, 29) + '...';
