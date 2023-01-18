@@ -28,6 +28,11 @@
     </article>
 </div>
 <style>
+    :root {
+        --appFirstColor: #BFFFC7;
+        --appSecondColor: #0A8270;
+        --ColorForBtn: #85b98c;
+    }
     .heder_link {
         text-decoration: none;
         color: #000;
@@ -43,7 +48,7 @@
     }
 
     .menu {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         height: 50px;
         width: auto;
         display: flex;
@@ -67,14 +72,14 @@
     .profil {
         height: 200px;
         width: 100%;
-        border-top: 4px solid aquamarine;
-        border-bottom: 4px solid aquamarine;
+        border-top: 4px solid var(--appFirstColor);
+        border-bottom: 4px solid var(--appFirstColor);
     }
 
     aside {
         height: 60vh;
         width: 300px;
-        border: 3px solid aquamarine;
+        border: 3px solid var(--appFirstColor);
         border-radius: 20px;
         display: flex;
         justify-content: space-around;
@@ -83,19 +88,19 @@
     }
 
     .squar {
-        border: 2px solid #000;
+        border: 2px solid var(--appFirstColor);
         height: 50px;
         width: 50px;
         border-radius: 50%;
     }
 
     .email {
-        color: aquamarine;
+        color: var(--appFirstColor);
         text-align: center;
     }
 
     .Date {
-        color: aquamarine;
+        color: var(--appFirstColor);
         margin-top: 20px;
         font-size: 60px;
     }
@@ -112,7 +117,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: aquamarine;
+        background: var(--appFirstColor);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -121,18 +126,18 @@
     }
 
     .reg_box {
-        background-color: #fff;
+        background-color: var(--appSecondColor);
         width: 300px;
         height: 50vh;
         border-radius: 20px;
-        border: 3px solid aquamarine;
-        outline: 2px solid white;
+        border: 3px solid var(--appFirstColor);
+        outline: 2px solid var(--appSecondColor);
     }
 
     .loginOrReg {
-        background-color: aquamarine;
-        height: 20%;
-        border-radius: 20px;
+        background-color: var(--appFirstColor);
+        height: 10%;
+        border-radius: 10px;
         margin-left: 5px;
         margin-right: 5px;
         display: flex;
@@ -157,54 +162,66 @@
 
     .regLink {
         text-decoration: none;
-        color: white;
+        color: var(--appSecondColor);
     }
 
     .loginOrReg:hover {
-        background-color: rgb(43, 170, 128);
+        background-color: var(--ColorForBtn);
     }
 
     .inputBtn {
         height: 30px;
         border: none;
         border-radius: 8px;
-        background-color: aquamarine;
-        color: white;
+        background-color: var(--appFirstColor);
+        color: var(--appSecondColor);
         border: none;
     }
 
     .inputBtn:hover {
-        background-color: rgb(43, 170, 128);
+        background-color: var(--ColorForBtn);
+    }
+    .input::placeholder{
+        color: var(--appFirstColor);
+    }
+    .input:active{
+        border-color: var(--ColorForBtn);
     }
 
     .input {
         height: 30px;
-        border: 1px solid aquamarine;
+        border: 1px solid var(--appFirstColor);
         text-align: center;
+        color: var(--appFirstColor);
+        background-color: var(--appSecondColor);
         border-radius: 8px;
+        width: 100%;
     }
 
     .err {
-        background-color: aquamarine;
+        display: none;
+        background-color: red;
         height: 40px;
         width: 300px;
         position: absolute;
         top: 100px;
-        color: rgb(226, 78, 78);
-        border-radius: 5px;
+        color: white;
+        border-radius: 7px;
+        border-color: white 2px red 1px;
         text-align: center;
     }
 
     .elm_list {
         width: 50vw;
         height: 50px;
-        border: 3px solid #000;
+        color: var(--appSecondColor);
+        border: none;
         border-radius: 15px;
         margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: white;
+        background-color: var(--appFirstColor);
     }
 </style>
 <script>

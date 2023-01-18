@@ -20,8 +20,13 @@
     </div>
 </div>
 <style>
+    :root {
+        --appFirstColor: #BFFFC7;
+        --appSecondColor: #0A8270;
+        --ColorForBtn: #85b98c;
+    }
     .btnChange {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         border: none;
         border-radius: 15px;
         height: 30px;
@@ -40,7 +45,7 @@
     }
 
     .change {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         color: white;
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
@@ -66,7 +71,7 @@
 
     .title {
         width: 80vw;
-        border: 4px solid aquamarine;
+        border: 4px solid var(--appSecondColor);
         height: 30px;
         border-radius: 20px;
         display: flex;
@@ -83,12 +88,12 @@
     }
 
     .title_change {
-        border: 4px solid #000;
+        border: 4px solid var(--appFirstColor);
     }
 
     .arial {
         height: 80vh;
-        border: 4px solid aquamarine;
+        border: 4px solid var(--appSecondColor);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -100,7 +105,7 @@
     .taria {
         text-align: center;
         border-radius: 20px;
-        border: 4px solid black;
+        border: 4px solid var(--appFirstColor);
         color: aquamarine;
 
     }
@@ -119,7 +124,7 @@
     }
 
     .menu {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         height: 50px;
         width: auto;
         display: flex;
@@ -129,14 +134,14 @@
 
     .link_menu {
         text-decoration: none;
-        color: black;
+        color: var(--appFirstColor);
         margin: 5px;
     }
 
     aside {
         height: 60vh;
         width: 300px;
-        border: 3px solid aquamarine;
+        border: 3px solid var(--appSecondColor);
         border-radius: 20px;
     }
 
@@ -150,7 +155,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -158,16 +163,16 @@
     }
 
     .reg_box {
-        background-color: #fff;
+        background-color: var(--appSecondColor);
         width: 300px;
         height: 50vh;
         border-radius: 20px;
-        border: 3px solid aquamarine;
-        outline: 2px solid white;
+        border: 3px solid var(--appSecondColor);
+        outline: 2px solid var(--appFirstColor);
     }
 
     .loginOrReg {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         height: 20%;
         border-radius: 20px;
         margin-left: 5px;
@@ -194,34 +199,34 @@
 
     .regLink {
         text-decoration: none;
-        color: white;
+        color: var(--appFirstColor);
     }
 
     .loginOrReg:hover {
-        background-color: rgb(43, 170, 128);
+        background-color: var(--ColorForBtn);
     }
 
     .inputBtn {
         height: 30px;
         border: none;
         border-radius: 8px;
-        background-color: aquamarine;
-        color: white;
+        background-color: var(--appSecondColor);
+        color: var(--appFirstColor);
     }
 
     .inputBtn:hover {
-        background-color: rgb(43, 170, 128);
+        background-color: var(--ColorForBtn);
     }
 
     .input {
         height: 30px;
-        border: 1px solid aquamarine;
+        border: 1px solid var(--appSecondColor);
         text-align: center;
         border-radius: 8px;
     }
 
     .err {
-        background-color: aquamarine;
+        background-color: var(--appSecondColor);
         height: 40px;
         width: 300px;
         position: absolute;

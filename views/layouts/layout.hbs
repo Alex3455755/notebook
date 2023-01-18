@@ -8,13 +8,22 @@
 
 <body>
     <style>
+        :root {
+            --appFirstColor: #BFFFC7;
+            --appSecondColor: #0A8270;
+            --ColorForBtn: #85b98c;
+        }
+
         * {
             margin: 0;
             padding: 0;
         }
+        body{
+            background-color: var(--appSecondColor);
+        }
 
         .menu {
-            background-color: aquamarine;
+            background-color: var(--appSecondColor);
             height: 50px;
             width: auto;
             display: flex;
@@ -31,7 +40,7 @@
         aside {
             height: 60vh;
             width: 300px;
-            border: 3px solid aquamarine;
+            border: 3px solid var(--appSecondColor);
             border-radius: 20px;
         }
 
@@ -39,30 +48,17 @@
             margin-top: 40px;
         }
 
-        .login {
-            height: 100vh;
-            width: 100vw;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: aquamarine;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
         .reg_box {
-            background-color: #fff;
+            background-color: var(--appFirstColor);
             width: 300px;
             height: 50vh;
             border-radius: 20px;
-            border: 3px solid aquamarine;
-            outline: 2px solid white;
+            border: 3px solid var(--appSecondColor);
+            outline: 2px solid var(--appFirstColor);
         }
 
         .loginOrReg {
-            background-color: aquamarine;
+            background-color: var(--appSecondColor);
             height: 20%;
             border-radius: 20px;
             margin-left: 5px;
@@ -90,27 +86,27 @@
 
         .regLink {
             text-decoration: none;
-            color: white;
+            color: var(--appFirstColor);
         }
 
         .loginOrReg:hover {
-            background-color: rgb(43, 170, 128);
+            background-color: var(--ColorForBtn);
         }
 
         .inputBtn {
             height: 30px;
             border: none;
             border-radius: 8px;
-            background-color: aquamarine;
-            color: white;
+            background-color: var(--appSecondColor);
+            color: var(--appFirstColor);
         }
 
         .inputBtn:hover {
-            background-color: rgb(43, 170, 128);
+            background-color: var(--ColorForBtn);
         }
 
         .err {
-            background-color: aquamarine;
+            background-color: var(--appSecondColor);
             height: 40px;
             width: 300px;
             position: absolute;
@@ -119,16 +115,19 @@
             border-radius: 5px;
             text-align: center;
         }
+
         .input {
             height: 30px;
-            border: 1px solid aquamarine;
+            border: 1px solid var(--appSecondColor);
             text-align: center;
             border-radius: 8px;
         }
-        .err_input::placeholder{
+
+        .err_input::placeholder {
             color: red;
         }
-        .vis{
+
+        .vis {
             visibility: hidden;
         }
     </style>
