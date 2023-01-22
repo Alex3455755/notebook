@@ -318,6 +318,7 @@
                 log.style.visibility = result.vision;
                 pErr.textContent = result.message;
                 email.textContent = name;
+                document.cookie = result.jwt;
                 listRender(name);
             });
         } else {
