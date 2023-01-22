@@ -232,7 +232,7 @@
     }
 
     function listRender(name) {
-        response('http://localhost:3000/list', { name: `${name}` }, (data) => {
+        response('http://192.168.0.52:3000/list', { name: `${name}` }, (data) => {
             data.reverse();
             const article = document.querySelector('article');
             for (i of data) {
@@ -285,7 +285,7 @@
         const name = inputs[0].value;
         const password = inputs[1].value;
         if (name !== '' && password !== '') {
-            response('http://localhost:3000/', { email: `${name}`, password: `${password}` }, (data) => {
+            response('http://192.168.0.52:3000/', { email: `${name}`, password: `${password}` }, (data) => {
                 const result = JSON.parse(data);
                 log.style.visibility = result.vision;
                 pErr.textContent = result.message;

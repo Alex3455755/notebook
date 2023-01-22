@@ -66,7 +66,6 @@ app.post('/add', jsonParser, function(res, req){
   date = date.toISOString().slice(0,10);
 
   connection.query('INSERT tasks(author,text,heder,date) VALUES(?,?,?,?)',[name,text,head,date],function(err, data){
-    console.log('данные добавлены');
     req.json({message: 'ok'});
   })
 })

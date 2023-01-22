@@ -90,10 +90,9 @@
         const head = input.value;
         const text = aria.value;
         const name = btn.dataset.name;
-        response('http://localhost:3000/add', { name: name, head: head, text: text }, (data) => {
-            console.log(data);
+        response('http://192.168.0.52:3000/add', { name: name, head: head, text: text }, (data) => {
             if (data.message === 'ok') {
-                window.location.href = `/?name=${name}`;
+               window.location.href = `/?name=${name}`;
             }
         })
     })

@@ -58,7 +58,7 @@
             const name = inputs[0].value;
             const password = inputs[1].value;
             if (name !== '' && password.length > 8) {
-                response('http://localhost:3000/registr', { email: `${name}`, password: `${password}` },
+                response('http://192.168.0.52:3000/registr', { email: `${name}`, password: `${password}` },
                     (data) => {
                         const result = JSON.parse(data);
                         if (result.message === "пользователь зарегистрирован") {

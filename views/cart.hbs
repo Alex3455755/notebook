@@ -264,7 +264,7 @@
 
     btnChan.addEventListener('click', function () {
         const name = par.dataset.author;
-        response('http://localhost:3000/change', { head: input.value, text: aria.value, name: name, pastHead: par.textContent },
+        response('http://192.168.0.52:3000/change', { head: input.value, text: aria.value, name: name, pastHead: par.textContent },
             (data) => {
                 if (data.message === 'ok') {
                     window.location.href = `/?name=${name}`;
