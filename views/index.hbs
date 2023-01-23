@@ -1,15 +1,16 @@
 <div class="login">
     <p class="err">{{message}}</p>
-    <div class="reg_box">
+    <div class="reg_Text">
         <div class="form" method="post">
+            <div class="swtcher">
+                <div id="active">Вход</div>
+                <div>Регистрация</div>
+            </div>
             <div class="inputs">
                 <input type="text" class="input" placeholder="Логин">
                 <input type="text" class="input" placeholder="Пароль">
                 <button class="inputBtn">Войти</button>
             </div>
-        </div>
-        <div class="loginOrReg">
-            <a href="/rigistr" class="regLink">РЕГИСТРАЦИЯ</a>
         </div>
     </div>
 </div>
@@ -29,10 +30,29 @@
 </div>
 <style>
     :root {
-        --appFirstColor: #BFFFC7;
-        --appSecondColor: #0A8270;
-        --ColorForBtn: #85b98c;
+        --appBodyColor: #373e57;
+        --appTextColor: #151728;
+        --ColorText: white;
+        --FontText: "DM Sans", sans-serif;
+        --appColor: rgb(230, 107, 12);
     }
+
+    .swtcher {
+        width: 60%;
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+    }
+
+    .swtcher>div {
+        color: var(--ColorText);
+        font-family: var(--FontText);
+    }
+
+    #active {
+        color: var(--appColor);
+    }
+
     .heder_link {
         text-decoration: none;
         color: #000;
@@ -43,12 +63,13 @@
         padding: 0;
     }
 
+
     .btn {
         width: 80%;
     }
 
     .menu {
-        background-color: var(--appSecondColor);
+        background-color: var(--appTextColor);
         height: 50px;
         width: auto;
         display: flex;
@@ -66,20 +87,20 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 80%;
+        height: 60%;
     }
 
     .profil {
         height: 200px;
         width: 100%;
-        border-top: 4px solid var(--appFirstColor);
-        border-bottom: 4px solid var(--appFirstColor);
+        border-top: 4px solid var(--appBodyColor);
+        border-bottom: 4px solid var(--appBodyColor);
     }
 
     aside {
         height: 60vh;
         width: 300px;
-        border: 3px solid var(--appFirstColor);
+        border: 3px solid var(--appBodyColor);
         border-radius: 20px;
         display: flex;
         justify-content: space-around;
@@ -88,19 +109,19 @@
     }
 
     .squar {
-        border: 2px solid var(--appFirstColor);
+        border: 2px solid var(--appBodyColor);
         height: 50px;
         width: 50px;
         border-radius: 50%;
     }
 
     .email {
-        color: var(--appFirstColor);
+        color: var(--appBodyColor);
         text-align: center;
     }
 
     .Date {
-        color: var(--appFirstColor);
+        color: var(--appBodyColor);
         margin-top: 20px;
         font-size: 60px;
     }
@@ -117,26 +138,26 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: var(--appFirstColor);
+        background: var(--appBodyColor);
         display: flex;
-        display: none;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         visibility: visible;
     }
 
-    .reg_box {
-        background-color: var(--appSecondColor);
+    .reg_Text {
+        background-color: var(--appTextColor);
         width: 300px;
         height: 50vh;
         border-radius: 20px;
-        border: 3px solid var(--appFirstColor);
-        outline: 2px solid var(--appSecondColor);
+        border: 2px solid var(--appColor);
+        outline: 3px solid var(--appTextColor);
+        Text-shadow: 0 0 20px var(--appColor);
     }
 
     .loginOrReg {
-        background-color: var(--appFirstColor);
+        background-color: var(--appBodyColor);
         height: 10%;
         border-radius: 10px;
         margin-left: 5px;
@@ -149,6 +170,7 @@
     .form {
         height: 78%;
         border-radius: 20px;
+        flex-direction: column;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -163,38 +185,42 @@
 
     .regLink {
         text-decoration: none;
-        color: var(--appSecondColor);
+        color: var(--appTextColor);
     }
 
     .loginOrReg:hover {
-        background-color: var(--ColorForBtn);
+        background-color: var(--appColor);
+        Text-shadow: 0 0 20px var(--appColor);
     }
 
     .inputBtn {
         height: 30px;
         border: none;
         border-radius: 8px;
-        background-color: var(--appFirstColor);
-        color: var(--appSecondColor);
+        background-color: var(--appBodyColor);
+        color: var(--appTextColor);
         border: none;
     }
 
     .inputBtn:hover {
-        background-color: var(--ColorForBtn);
+        background-color: var(--appColor);
+        box-shadow: 0 0 20px var(--appColor);;
     }
-    .input::placeholder{
-        color: var(--appFirstColor);
+
+    .input::placeholder {
+        color: var(--appBodyColor);
     }
-    .input:active{
-        border-color: var(--ColorForBtn);
+
+    .input:active {
+        border-color: var(--appColor);
     }
 
     .input {
         height: 30px;
-        border: 1px solid var(--appFirstColor);
+        border: 1px solid var(--appBodyColor);
         text-align: center;
-        color: var(--appFirstColor);
-        background-color: var(--appSecondColor);
+        color: var(--appBodyColor);
+        background-color: var(--appTextColor);
         border-radius: 8px;
         width: 100%;
     }
@@ -216,7 +242,7 @@
         width: 25vw;
         position: relative;
         height: 25vw;
-        color: var(--appSecondColor);
+        color: var(--appTextColor);
         border: 2px solid #000;
         margin-top: 20px;
         display: flex;
@@ -224,6 +250,7 @@
         justify-content: center;
         background-color: yellow;
     }
+
     .elm_list::after {
         border: 2px solid #000;
         z-index: -1;
@@ -246,6 +273,7 @@
     const log = document.querySelector('.login');
     const email = document.querySelector('.email');
     const addBtn = document.querySelector('.btn');
+    const link = 'localhost';
 
     async function response(url, obj, fun) {
         const res = await fetch(url, {
@@ -260,7 +288,7 @@
     }
 
     function listRender(name) {
-        response('http://192.168.0.52:3000/list', { name: `${name}` }, (data) => {
+        response(link + '/list', { name: `${name}` }, (data) => {
             data.reverse();
             const article = document.querySelector('article');
             for (i of data) {
@@ -282,7 +310,6 @@
             }
         });
     }
-    console.log(email.textContent);
     if (email.textContent) {
         const name = email.textContent;
         listRender(name);
@@ -313,7 +340,7 @@
         const name = inputs[0].value;
         const password = inputs[1].value;
         if (name !== '' && password !== '') {
-            response('http://192.168.0.52:3000/', { email: `${name}`, password: `${password}` }, (data) => {
+            response(link + '/', { email: `${name}`, password: `${password}` }, (data) => {
                 const result = JSON.parse(data);
                 log.style.visibility = result.vision;
                 pErr.textContent = result.message;
@@ -330,5 +357,29 @@
             }
         }
     });
-
+    function renderForm(str) {
+        if (str == 'Вход') {
+            return `<input type="text" class="input" placeholder="Логин">
+                <input type="text" class="input" placeholder="Пароль">
+                <button class="inputBtn">Войти</button>`
+        } else {
+            return `<input type="text" class="input" placeholder="Логин">
+                            <input type="text" class="input" placeholder="Пароль">
+                            <input type="text" class="input" placeholder="Пароль ещё раз">
+                                <button class="inputBtn">Зарегистрироватся</button>`
+        }
+    }
+    for (i of document.querySelector('.swtcher').children) {
+        i.addEventListener('click', (event) => {
+            const form = document.querySelector('.inputs');
+            for (i of document.querySelector('.swtcher').children) {
+                if (i.id == '') {
+                    i.id = 'active';
+                    form.innerHTML = renderForm(i.textContent)
+                } else {
+                    i.id = '';
+                }
+            }
+        })
+    }
 </script>

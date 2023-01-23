@@ -8,10 +8,12 @@
 
 <body>
     <style>
+        @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700|Source+Sans+Pro:300,400,600,700&display=swap");
         :root {
-            --appFirstColor: #BFFFC7;
-            --appSecondColor: #0A8270;
-            --ColorForBtn: #85b98c;
+            --appBodyColor: #373e57;
+            --appBoxColor: #151728;
+            --ColorText: white;
+            --FontText: "DM Sans", sans-serif;
         }
 
         * {
@@ -19,11 +21,11 @@
             padding: 0;
         }
         body{
-            background-color: var(--appSecondColor);
+            background-color: var(--appBodyColor);
         }
 
         .menu {
-            background-color: var(--appSecondColor);
+            background-color: var(--appBoxColor);
             height: 50px;
             width: auto;
             display: flex;
@@ -40,7 +42,7 @@
         aside {
             height: 60vh;
             width: 300px;
-            border: 3px solid var(--appSecondColor);
+            border: 3px solid var(--appBoxColor);
             border-radius: 20px;
         }
 
@@ -49,16 +51,16 @@
         }
 
         .reg_box {
-            background-color: var(--appFirstColor);
+            background-color: var(--appBodyColor);
             width: 300px;
             height: 50vh;
             border-radius: 20px;
-            border: 3px solid var(--appSecondColor);
-            outline: 2px solid var(--appFirstColor);
+            border: 3px solid var(--appBoxColor);
+            outline: 2px solid var(--appBodyColor);
         }
 
         .loginOrReg {
-            background-color: var(--appSecondColor);
+            background-color: var(--appBoxColor);
             height: 20%;
             border-radius: 20px;
             margin-left: 5px;
@@ -86,7 +88,7 @@
 
         .regLink {
             text-decoration: none;
-            color: var(--appFirstColor);
+            color: var(--appBodyColor);
         }
 
         .loginOrReg:hover {
@@ -97,8 +99,8 @@
             height: 30px;
             border: none;
             border-radius: 8px;
-            background-color: var(--appSecondColor);
-            color: var(--appFirstColor);
+            background-color: var(--appBoxColor);
+            color: var(--appBodyColor);
         }
 
         .inputBtn:hover {
@@ -106,7 +108,7 @@
         }
 
         .err {
-            background-color: var(--appSecondColor);
+            background-color: var(--appBoxColor);
             height: 40px;
             width: 300px;
             position: absolute;
@@ -118,7 +120,7 @@
 
         .input {
             height: 30px;
-            border: 1px solid var(--appSecondColor);
+            border: 1px solid var(--appBoxColor);
             text-align: center;
             border-radius: 8px;
         }

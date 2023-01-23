@@ -78,6 +78,7 @@
     const name = btn.dataset.name;
     const aria = document.querySelector('.taria');
     const input = document.querySelector('.input_change');
+    const link = 'localhost';
 
     async function response(url, obj, fun) {
         const res = await fetch(url, {
@@ -95,7 +96,7 @@
         const head = input.value;
         const text = aria.value;
         const name = btn.dataset.name;
-        response('http://192.168.0.52:3000/add', { name: name, head: head, text: text }, (data) => {
+        response(link + '/add', { name: name, head: head, text: text }, (data) => {
             if (data.message === 'ok') {
                window.location.href = `/?name=${name}`;
             }

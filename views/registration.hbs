@@ -10,9 +10,10 @@
     </div>
     <style>
         :root {
-            --appFirstColor: #BFFFC7;
-            --appSecondColor: #0A8270;
-            --ColorForBtn: #85b98c;
+            --appBodyColor: #373e57;
+            --appBoxColor: #151728;
+            --ColorText: white;
+            --FontText: "DM Sans", sans-serif;
         }
 
         .menu {
@@ -24,7 +25,7 @@
         }
 
         body {
-            background-color: var(--appSecondColor);
+            background-color: var(--appBodyColor);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -46,6 +47,7 @@
         const link = document.querySelector('.link_main');
         const inputs = document.querySelectorAll('.input');
         const err = document.querySelector('.err');
+        const link = 'localhost';
 
         async function response(url, obj, fun) {
             const res = await fetch(url, {
@@ -64,7 +66,7 @@
             const name = inputs[0].value;
             const password = inputs[1].value;
             if (name !== '' && password.length > 8) {
-                response('http://192.168.0.52:3000/registr', { email: `${name}`, password: `${password}` },
+                response(link + '/registr', { email: `${name}`, password: `${password}` },
                     (data) => {
                         const result = JSON.parse(data);
                         if (result.message === "пользователь зарегистрирован") {
