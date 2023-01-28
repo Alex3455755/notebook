@@ -124,9 +124,9 @@ app.post('/', jsonParser, function (res, req) {
       if (err) return console.log(err);
       if (data.length !== 0) {
         const token = jwt.sign({ name: email, role: 'user' }, secret, { expiresIn: '2h' });
-        req.json({"vision": "hidden", "message": "",jwt: token});
+        req.json({vision: "hidden", message: "",jwt: token});
       } else {
-        req.send(JSON.stringify('{"vision": "visible", "message": "Неверный пароль или логин"}'));
+        req.json({vision: "visible", message: "Неверный пароль или логин"});
       }
     });
 });

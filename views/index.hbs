@@ -8,7 +8,7 @@
             </div>
             <div class="inputs">
                 <input type="text" class="input" placeholder="Логин">
-                <input type="text" class="input" placeholder="Пароль">
+                <input type="password" class="input" placeholder="Пароль">
                 <button class="inputBtn">Войти</button>
             </div>
         </div>
@@ -40,17 +40,28 @@
     .swtcher {
         width: 60%;
         display: flex;
-        justify-content: space-around;
         margin-bottom: 20px;
+        justify-content: center;
     }
 
     .swtcher>div {
         color: var(--ColorText);
         font-family: var(--FontText);
+        padding-right: 20px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid white;
+        padding-left: 20px;
+    }
+
+    .swtcher>div:nth-child(2) {
+        padding-right: 0;
+        padding-left: 0;
     }
 
     #active {
         color: var(--appColor);
+        border-bottom: 2px solid var(--appColor);
+        transition: 1s;
     }
 
     .heder_link {
@@ -148,14 +159,23 @@
 
     .reg_Text {
         background-color: var(--appTextColor);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 300px;
-        height: 50vh;
+        height: 42vh;
         border-radius: 20px;
+        transition: .2s;
         border: 2px solid var(--appColor);
         outline: 3px solid var(--appTextColor);
         Text-shadow: 0 0 20px var(--appColor);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     }
 
+    .signIn {
+        height: 50vh;
+        transition: .2s;
+    }
     .loginOrReg {
         background-color: var(--appBodyColor);
         height: 10%;
@@ -204,7 +224,8 @@
 
     .inputBtn:hover {
         background-color: var(--appColor);
-        box-shadow: 0 0 20px var(--appColor);;
+        box-shadow: 0 0 20px var(--appColor);
+        ;
     }
 
     .input::placeholder {
@@ -219,12 +240,11 @@
         height: 30px;
         border: 1px solid var(--appBodyColor);
         text-align: center;
-        color: var(--appBodyColor);
+        color: white;
         background-color: var(--appTextColor);
         border-radius: 8px;
         width: 100%;
     }
-
     .err {
         display: none;
         background-color: red;
@@ -273,7 +293,7 @@
     const log = document.querySelector('.login');
     const email = document.querySelector('.email');
     const addBtn = document.querySelector('.btn');
-    const link = 'localhost';
+    const link = 'http://localhost:3000';
 
     async function response(url, obj, fun) {
         const res = await fetch(url, {
@@ -340,12 +360,11 @@
         const name = inputs[0].value;
         const password = inputs[1].value;
         if (name !== '' && password !== '') {
-            response(link + '/', { email: `${name}`, password: `${password}` }, (data) => {
-                const result = JSON.parse(data);
-                log.style.visibility = result.vision;
-                pErr.textContent = result.message;
+            response(link + '', { email: `${name}`, password: `${password}` }, (data) => {
+                log.style.visibility = data.vision;
+                pErr.textContent = data.message;
                 email.textContent = name;
-                document.cookie = result.jwt;
+                document.cookie = data.jwt;
                 listRender(name);
             });
         } else {
@@ -359,13 +378,15 @@
     });
     function renderForm(str) {
         if (str == 'Вход') {
+            document.querySelector('.reg_Text').classList.remove('signIn');
             return `<input type="text" class="input" placeholder="Логин">
-                <input type="text" class="input" placeholder="Пароль">
+                <input type="password" class="input" placeholder="Пароль">
                 <button class="inputBtn">Войти</button>`
         } else {
+            document.querySelector('.reg_Text').classList.add('signIn');
             return `<input type="text" class="input" placeholder="Логин">
-                            <input type="text" class="input" placeholder="Пароль">
-                            <input type="text" class="input" placeholder="Пароль ещё раз">
+                            <input type="password" class="input" placeholder="Пароль">
+                            <input type="password" class="input" placeholder="Пароль ещё раз">
                                 <button class="inputBtn">Зарегистрироватся</button>`
         }
     }
